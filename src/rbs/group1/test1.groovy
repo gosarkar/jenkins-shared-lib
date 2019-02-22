@@ -12,3 +12,16 @@ def sonarAnalysis(sonarScannerHome){
   echo "sonarscanner home = ${sonarScannerHome}"
   //bat sonarScannerHome+'/bin/sonar-scanner -Dsonar.projectname=ELibrary-pipeline -Dsonar.projectKey=ELibrary-pipeline -Dsonar.projectVersion=${BUILD_NUMBER} -Dsonar.sources=src -Dsonar.language=java -Dsonar.java.binaries=target'
 }
+
+def updateSecretText(user, password, str){
+    def encodedUser = user.bytes.encodeBase64().toString()
+    def encodedPassword = password.bytes.encodeBase64().toString()
+    //def str = readFile fileName
+    println 'encoded user = '+encodedUser
+    println 'encoded password = '+encodedPassword
+    
+    str = str.replace('USERNAME', encodedUser)
+    str = str.replace('PASSWORD', encodedPassword)
+    println '==>>'+str
+    return str  
+}
