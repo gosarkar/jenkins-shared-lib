@@ -30,5 +30,7 @@ def updateSecretText(user, password, str){
 
 def log(){
   Logger logger = Logger.getLogger('hello')
-  logger.info 'hello'
+  println 'inside log method'
+  logger.info 'info message'
+  logger.warning 'warning message'
 }
