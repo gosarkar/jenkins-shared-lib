@@ -5,9 +5,11 @@ package rb.group1;
 import org.apache.log4j.*
 import groovy.util.logging.*
 
+class logger{
+    static Logger log = Logger.getInstance(getClass())
     def execute() {
         println 'inside execute'
-        Logger log = Logger.getInstance(getClass())
+        
         log.addAppender(new FileAppender(new TTCCLayout(), 'myscript.log'));
         // Need to set log level as described here: 
         // http://groovy.329449.n5.nabble.com/log4j-annotation-not-working-td4368806.html
@@ -25,5 +27,5 @@ import groovy.util.logging.*
     def sayHello(){
         println 'Hello'
     }
-
+}
 
