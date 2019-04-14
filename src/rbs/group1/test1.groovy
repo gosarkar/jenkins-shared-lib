@@ -1,6 +1,6 @@
 package rbs.group1;
 
-import java.util.logging.Logger
+import java.util.logging.*
 
 def sayHello(name) {
   checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/gosarkar/pipelinescript.git']]]
@@ -30,6 +30,10 @@ def updateSecretText(user, password, str){
 
 def log(){
   Logger logger = Logger.getLogger('hello')
+  fh = new FileHandler("MyLogFile.log");  
+  logger.addHandler(fh);
+  SimpleFormatter formatter = new SimpleFormatter();  
+  fh.setFormatter(formatter); 
   println 'inside log method'
   logger.info 'info message'
   logger.warning 'warning message'
