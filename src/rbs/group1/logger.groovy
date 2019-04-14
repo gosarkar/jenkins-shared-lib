@@ -8,6 +8,7 @@ import groovy.util.logging.*
     def execute() {
         println 'inside execute'
         Logger log = Logger.getInstance(getClass())
+        log.addAppender(new FileAppender(new TTCCLayout(), 'myscript.log'));
         // Need to set log level as described here: 
         // http://groovy.329449.n5.nabble.com/log4j-annotation-not-working-td4368806.html
         log.level = Level.DEBUG
