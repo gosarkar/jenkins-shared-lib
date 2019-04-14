@@ -16,6 +16,7 @@ class logger{
         log.debug 'Execute HelloWorld.'
         // this will print
         log.info 'Simple sample to show log field is injected.'
+        println log
     }
 }
 
