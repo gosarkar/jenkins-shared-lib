@@ -6,7 +6,7 @@ import org.apache.log4j.*
 import groovy.util.logging.*
 
 class logger{
-    static Logger log = Logger.getInstance(getClass())
+    transient static Logger log = Logger.getInstance(getClass())
     transient static fileAppender = new FileAppender(new TTCCLayout(), 'myscript.log')
     def execute() {
         println 'inside execute'
