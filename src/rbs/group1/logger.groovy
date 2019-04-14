@@ -1,3 +1,5 @@
+package rb.group1;
+
 @Grab('log4j:log4j:1.2.17')
 
 import org.apache.log4j.*
