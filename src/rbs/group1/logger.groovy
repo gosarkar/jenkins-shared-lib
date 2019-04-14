@@ -6,6 +6,7 @@ import groovy.util.logging.*
 @Log4j
 class logger{
     def execute() {
+        println 'inside execute'
         // Need to set log level as described here: 
         // http://groovy.329449.n5.nabble.com/log4j-annotation-not-working-td4368806.html
         log.level = Level.DEBUG
