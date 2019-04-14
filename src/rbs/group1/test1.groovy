@@ -33,4 +33,5 @@ def log(){
   println 'inside log method'
   logger.info 'info message'
   logger.warning 'warning message'
+  println logger
 }
