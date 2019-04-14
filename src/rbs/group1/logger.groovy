@@ -6,7 +6,7 @@ import org.apache.log4j.*
 import groovy.util.logging.*
 
 @Log4j
-class logger{
+public class logger{
     def execute() {
         println 'inside execute'
         // Need to set log level as described here: 
@@ -20,6 +20,10 @@ class logger{
         // this will print
         log.info 'Simple sample to show log field is injected.'
         println log
+    }
+    
+    def sayHello(){
+        println 'Hello'
     }
 }
 
