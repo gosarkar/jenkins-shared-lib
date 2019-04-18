@@ -10,7 +10,7 @@ import groovy.util.logging.*
     def execute() {
         println 'inside execute'
         Logger log = Logger.getInstance(getClass())
-        fileAppender = new FileAppender(new TTCCLayout(), 'myscript.log')    
+        fileAppender = new FileAppender(new TTCCLayout(), 'c:/temp/myscript.log')    
         log.addAppender(fileAppender);
         // Need to set log level as described here: 
         // http://groovy.329449.n5.nabble.com/log4j-annotation-not-working-td4368806.html
@@ -23,6 +23,7 @@ import groovy.util.logging.*
         // this will print
         log.info 'Simple sample to show log field is injected.'
         println log
+        fileAppender = null
     }
     
     def sayHello(){
