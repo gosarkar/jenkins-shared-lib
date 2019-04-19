@@ -19,23 +19,16 @@ def debugFilter = { line -> line.contains('debug')}
 def genericFilter = { line -> true }
 def consoleAppender = {line -> println line}
 def fileAppender = {line -> file << "$line\n"}
-def configurator = { format, filter, line -> 
+def log = { format, filter, append, line -> 
   println 'inside configurator'
-  filter(line) ? format(line) :  null
+  record = filter(line) ? format(line) :  null
+  if(record) append(line)
 }
-def appender = {config, append, line -> 
-    println 'inside appender'
-  record = config(line)
-  if (record) append(record)
-}
-
-def config = configurator.curry(dateFormatter, genericFilter)
-def log = appender.curry(config, consoleAppender)
 
 
 def logMessage(message){
   echo "Log message: $message"
-  log('==>>>> logging....')
+  log(dateFormatter, genericFilter, consoleAppender, "==>>logging: $message")
   file << "$message$ln"
 }
 
