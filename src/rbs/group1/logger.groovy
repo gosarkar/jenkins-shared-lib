@@ -6,7 +6,7 @@ import org.apache.log4j.*
 import groovy.util.logging.*
 
 
-    
+     @NonCPS
     def execute() {
         println 'inside execute'
         Logger log = Logger.getInstance(getClass())
