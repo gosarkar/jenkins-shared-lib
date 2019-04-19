@@ -24,6 +24,7 @@ import groovy.util.logging.*
         log.info 'Simple sample to show log field is injected.'
         println log
         fileAppender = null
+        log = null
     }
     
     def sayHello(){
