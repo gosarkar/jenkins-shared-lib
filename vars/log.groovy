@@ -6,8 +6,11 @@ WARN=2
 
 ERROR=3
 
+@groovy.transform.Field
 ln = System.getProperty('line.separator')
-def file = new File("C:/temp/log.txt")
+
+@groovy.transform.Field
+file = new File("C:/temp/log.txt")
 
 def logMessage(message){
   echo "Log message: $message"
