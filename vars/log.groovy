@@ -45,7 +45,16 @@ def logMessage(message, requestedLevel){
         return
     } 
     formattedMessage = getFormattedMessage(message, requestedLevel)
-    logMessage(formattedMessage)
+    echo "$formattedMessage"
+    if(isFirstTime){
+        generalLogFile.write('')
+        errorLogFile.write('')
+        isFirstTime = false    
+    }
+    generalLogFile << "$formattedMessage $ln"
+    if(isErrorMessage(requestedLevel)){
+        errorLogFile << "$formattedMessage $ln"
+    }
 }
 
 def logMessage(message, stageName, requestedLevel){
@@ -54,10 +63,6 @@ def logMessage(message, stageName, requestedLevel){
         return
     } 
     formattedMessage = getFormattedMessage(message, stageName, requestedLevel)
-    logMessage(formattedMessage)
-}
-
-def logMessage(message){
     echo "$formattedMessage"
     if(isFirstTime){
         generalLogFile.write('')
