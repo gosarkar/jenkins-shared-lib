@@ -33,7 +33,7 @@ def logMessage(message, requestedLevel){
     echo "$formattedMessage"
     //generalLogFile << "$message$ln"
 }
-*/
+
 
 
 def debug(message){
