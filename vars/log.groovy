@@ -55,6 +55,9 @@ def logMessage(message, requestedLevel){
     if(isErrorMessage(requestedLevel)){
         errorLogFile << "$formattedMessage $ln"
     }
+
+    test = new rbs.group1.test1()
+    test.sayHello("World")
 }
 
 def logMessage(message, stageName, requestedLevel){
