@@ -10,10 +10,10 @@ level = logLevel.ALL
 //@groovy.transform.Field
 //errorLogFile = new File("c:/temp/error.txt")
 
-//def setLevel(level){
-//    echo "received level = $level"
-//    this.level = level 
-//}
+def setLevel(requestedLevel){
+    echo "received level = $requestedLevel"
+    level = requestedLevel 
+}
 
 
 def canBeLogged(requestedLevel){
@@ -23,45 +23,45 @@ def canBeLogged(requestedLevel){
 }
 
 
-/*
-def logMessage(message, level){
-    if(!canBeLogged(level)){
+
+def logMessage(message, requestedLevel){
+    if(!canBeLogged(requestedLevel)){
         echo "Cannot be logged"
         return
     } 
-    formattedMessage = getFormattedMessage(formattedMessage, level)
+    formattedMessage = getFormattedMessage(formattedMessage, requestedLevel)
     echo "$formattedMessage"
     //generalLogFile << "$message$ln"
 }
 */
 
-/*
+
 def debug(message){
     echo "debug: $message"
-    //logMessage(message, logLevel.DEBUG)
+    logMessage(message, logLevel.DEBUG)
 }
 
 def info(message){
     echo "info: $message"
-    //logMessage(message, logLevel.INFO) 
+    logMessage(message, logLevel.INFO) 
 }
 
 def warn(message){
     echo "warn: $message"
-    //logMessage(message, logLevel.WARN) 
+    logMessage(message, logLevel.WARN) 
 }
 
 def error(message){
     echo "error: $message"
-    //logMessage(message, logLevel.ERROR) 
+    logMessage(message, logLevel.ERROR) 
 }
 
 def getFormattedMessage(message, level){
     echo "getFormattedMessage: $message $level"
-    //return "${new Date()} - $JOB_NAME - $BUILD_NUMBER $ln${logLevel.getLevelName(level)}: $message$ln" 
-    return "message"
+    return "${new Date()} - $JOB_NAME - $BUILD_NUMBER $ln${logLevel.getLevelName(level)}: $message$ln" 
+    //return "message"
 }
-*/
+
 
 def test(message){
     echo "testing: $message"
