@@ -7,10 +7,10 @@ ln = System.getProperty('line.separator')
 level = logLevel.ALL
 
 @groovy.transform.Field
-generalLogFile = new File("c:/temp/log.txt")
+generalLogFile = new File("c:/temp/$JOB_BASE_NAME_$BUILD_NUMBER_GENERAL.log")
 
 @groovy.transform.Field
-errorLogFile = new File("c:/temp/error.txt")
+errorLogFile = new File("c:/temp/$JOB_BASE_NAME_$BUILD_NUMBER_ERROR.log")
 
 @groovy.transform.Field
 dateTimeFormat = "MMMM dd, yyyy HH:mm:ss a"
