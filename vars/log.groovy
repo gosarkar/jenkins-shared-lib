@@ -20,7 +20,7 @@ def logMessage(message, level){
         echo "Cannot be logged"
         return
     } 
-    formattedMessage = getFormattedMessage(formattedMessage)
+    formattedMessage = getFormattedMessage(formattedMessage, level)
     echo "$formattedMessage"
     generalLogFile << "$message$ln"
 }
@@ -41,6 +41,6 @@ def error(message){
     logMessage(message, logLevel.ERROR) 
 }
 
-def getFormattedMessage(message){
-    return "${new Date()} - $JOB_NAME - $BUILD_NUMBER : $message" 
+def getFormattedMessage(message, level){
+    return "${new Date()} - $JOB_NAME - $BUILD_NUMBER $ln${logLevel.getLevelName(level)}: $message$ln" 
 }

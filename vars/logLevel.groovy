@@ -21,3 +21,20 @@ ERROR=4
 /* The highest possible level intended to turn off logging */
 @groovy.transform.Field
 OFF=5
+
+def getLevelName(level){
+    name = ""
+    if(level == DEBUG) {
+        name = "DEBUG"
+    } 
+    else if (level == INFO) {
+        name = "INFO"
+    }
+    else if (level == WARN) {
+        name = "WARN"
+    }
+    else if (level == ERROR) {
+        name = "ERROR"
+    }
+    return name 
+}
