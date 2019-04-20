@@ -65,6 +65,6 @@ def getFormattedMessage(message, level){
 
 def test(message){
     echo "testing: $message"
-    echo "debug level: "+logLevel.DEBUG
-    echo "debug level name "+logLevel.getLevelName(logLevel.DEBUG)
+    echo "debug level: ${logLevel.DEBUG}"
+    echo "debug level name ${logLevel.getLevelName(logLevel.DEBUG)}"
 }
