@@ -13,7 +13,10 @@ generalLogFile = new File("c:/temp/log.txt")
 errorLogFile = new File("c:/temp/error.txt")
 
 @groovy.transform.Field
-dateTimeFormat = "MMMM dd yyyy HH:mm:ss a"
+dateTimeFormat = "MMMM dd, yyyy HH:mm:ss a"
+
+@groovy.transform.Field
+isFirstTime = true
 
 def setLevel(requestedLevel){
     echo "received level = $requestedLevel"
@@ -43,6 +46,11 @@ def logMessage(message, requestedLevel){
     } 
     formattedMessage = getFormattedMessage(message, requestedLevel)
     echo "$formattedMessage"
+    if(isFirstTime){
+        generalLogFile.write('')
+        errorLogFile.write('')
+        isFirstTime = false    
+    }
     generalLogFile << "$formattedMessage $ln"
     if(isErrorMessage(requestedLevel)){
         errorLogFile << "$formattedMessage $ln"
