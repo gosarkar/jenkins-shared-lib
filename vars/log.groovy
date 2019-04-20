@@ -28,7 +28,7 @@ def logMessage(message, level){
     } 
     formattedMessage = getFormattedMessage(formattedMessage, level)
     echo "$formattedMessage"
-    generalLogFile << "$message$ln"
+    //generalLogFile << "$message$ln"
 }
 
 def debug(message){
