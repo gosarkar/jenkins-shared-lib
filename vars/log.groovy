@@ -29,7 +29,7 @@ def logMessage(message, requestedLevel){
         echo "Cannot be logged"
         return
     } 
-    formattedMessage = getFormattedMessage(formattedMessage, requestedLevel)
+    formattedMessage = getFormattedMessage(message, requestedLevel)
     echo "$formattedMessage"
     //generalLogFile << "$message$ln"
 }
