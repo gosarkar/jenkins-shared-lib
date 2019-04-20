@@ -9,8 +9,10 @@ level = logLevel.ALL
 @groovy.transform.Field
 generalLogFile = new File("c:/temp/log.txt")
 
-//@groovy.transform.Field
-//errorLogFile = new File("c:/temp/error.txt")
+@groovy.transform.Field
+errorLogFile = new File("c:/temp/error.txt")
+
+dateTimeFormat = "MMMM dd yyyy HH:mm:ss a"
 
 def setLevel(requestedLevel){
     echo "received level = $requestedLevel"
@@ -26,7 +28,7 @@ def canBeLogged(requestedLevel){
 
 def getCurrentDateTime(){
     currentDate = new Date()
-    SimpleDateFormat sdf = new SimpleDateFormat("MMMM dd yyyy HH:mm:ss a");
+    SimpleDateFormat sdf = new SimpleDateFormat(dateTimeFormat);
     return sdf.format(currentDate)
 }
 
