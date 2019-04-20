@@ -16,10 +16,10 @@ level = logLevel.ALL
 //}
 
 
-def canBeLogged(level){
-    echo "received level = $level"
-    echo "level set = $this.level"
-    this.level <= level ? true : false 
+def canBeLogged(requestedLevel){
+    echo "received level = $requestedLevel"
+    echo "level set = $level"
+    level <= requestedLevel ? true : false 
 }
 
 
@@ -67,8 +67,8 @@ def test(message){
     echo "testing: $message"
     echo "debug level: ${logLevel.DEBUG}"
     echo "level: $level"
-    level = logLevel.DEBUG
-    echo "can be logged: "+canBeLogged(level)
+    requestedLevel = logLevel.DEBUG
+    echo "can be logged: "+canBeLogged(requestedLevel)
     //echo "debug level name ${logLevel.getLevelName(logLevel.DEBUG)}"
     echo "${new Date()} - $JOB_NAME - $BUILD_NUMBER $ln${logLevel.getLevelName(level)}: $message$ln" 
 }
