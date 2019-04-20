@@ -45,6 +45,19 @@ def logMessage(message, requestedLevel){
         return
     } 
     formattedMessage = getFormattedMessage(message, requestedLevel)
+    logMessage(formattedMessage)
+}
+
+def logMessage(message, stageName, requestedLevel){
+    if(!canBeLogged(requestedLevel)){
+        echo "Cannot be logged"
+        return
+    } 
+    formattedMessage = getFormattedMessage(message, stageName, requestedLevel)
+    logMessage(formattedMessage)
+}
+
+def logMessage(message){
     echo "$formattedMessage"
     if(isFirstTime){
         generalLogFile.write('')
