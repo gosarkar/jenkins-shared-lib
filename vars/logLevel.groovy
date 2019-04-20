@@ -23,6 +23,7 @@ ERROR=4
 OFF=5
 
 def getLevelName(level){
+    echo "getlevelname: $level"
     name = ""
     if(level == DEBUG) {
         name = "DEBUG"
