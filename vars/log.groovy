@@ -4,11 +4,11 @@ ln = System.getProperty('line.separator')
 @groovy.transform.Field
 level = logLevel.ALL
 
-@groovy.transform.Field
-generalLogFile = new File("c:/temp/log.txt")
+//@groovy.transform.Field
+//generalLogFile = new File("c:/temp/log.txt")
 
-@groovy.transform.Field
-errorLogFile = new File("c:/temp/error.txt")
+//@groovy.transform.Field
+//errorLogFile = new File("c:/temp/error.txt")
 
 def setLevel(level){
     echo "received level = $level"
