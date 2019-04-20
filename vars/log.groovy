@@ -2,7 +2,7 @@
 ln = System.getProperty('line.separator')
 
 @groovy.transform.Field
-level = logLevel.ALL
+//level = logLevel.ALL
 
 //@groovy.transform.Field
 //generalLogFile = new File("c:/temp/log.txt")
@@ -54,4 +54,8 @@ def error(message){
 def getFormattedMessage(message, level){
     echo "getFormattedMessage: $message $level"
     return "${new Date()} - $JOB_NAME - $BUILD_NUMBER $ln${logLevel.getLevelName(level)}: $message$ln" 
+}
+
+def test(message){
+    echo "testing: $message"
 }
