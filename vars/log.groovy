@@ -1,5 +1,5 @@
-//@groovy.transform.Field
-//ln = System.getProperty('line.separator')
+@groovy.transform.Field
+ln = System.getProperty('line.separator')
 
 //@groovy.transform.Field
 //level = logLevel.ALL
@@ -66,5 +66,6 @@ def getFormattedMessage(message, level){
 def test(message){
     echo "testing: $message"
     echo "debug level: ${logLevel.DEBUG}"
-    echo "debug level name ${logLevel.getLevelName(logLevel.DEBUG)}"
+    //echo "debug level name ${logLevel.getLevelName(logLevel.DEBUG)}"
+    echo "${new Date()} - $JOB_NAME - $BUILD_NUMBER $ln${logLevel.getLevelName(level)}: $message$ln" 
 }
