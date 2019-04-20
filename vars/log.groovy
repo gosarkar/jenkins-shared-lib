@@ -57,11 +57,14 @@ def logMessage(message, requestedLevel){
     }
 }
 
-
-
 def debug(message){
     echo "debug: $message"
     logMessage(message, logLevel.DEBUG)
+}
+
+def debug(message, stageName){
+    echo "debug: $message"
+    logMessage(message, stageName, logLevel.DEBUG)
 }
 
 def info(message){
@@ -69,9 +72,19 @@ def info(message){
     logMessage(message, logLevel.INFO) 
 }
 
+def info(message, stageName){
+    echo "info: $message"
+    logMessage(message, stageName, logLevel.INFO) 
+}
+
 def warn(message){
     echo "warn: $message"
     logMessage(message, logLevel.WARN) 
+}
+
+def warn(message, stageName){
+    echo "warn: $message"
+    logMessage(message, stageName, logLevel.WARN) 
 }
 
 def error(message){
@@ -79,19 +92,20 @@ def error(message){
     logMessage(message, logLevel.ERROR) 
 }
 
+def error(message, stageName){
+    echo "error: $message"
+    logMessage(message, stageName, logLevel.ERROR) 
+}
+
 def getFormattedMessage(message, level){
     echo "getFormattedMessage: $message $level"
     return "${getCurrentDateTime()} - $JOB_NAME - Build No - $BUILD_NUMBER $ln${logLevel.getLevelName(level)}: $message" 
 }
 
-
-def test(message){
-    echo "testing: $message"
-    echo "debug level: ${logLevel.DEBUG}"
-    echo "level: $level"
-    requestedLevel = logLevel.DEBUG
-    echo "can be logged: "+canBeLogged(requestedLevel)
-    //echo "debug level name ${logLevel.getLevelName(logLevel.DEBUG)}"
-    echo "${new Date()} - $JOB_NAME - $BUILD_NUMBER $ln${logLevel.getLevelName(level)}: $message$ln" 
+def getFormattedMessage(message, stageName, level){
+    echo "getFormattedMessage: $message $level"
+    return "${getCurrentDateTime()} - $JOB_NAME - Build No - $BUILD_NUMBER - Stage $stageName $ln${logLevel.getLevelName(level)}: $message" 
 }
+
+
 
