@@ -1,3 +1,5 @@
+import java.text.SimpleDateFormat
+
 @groovy.transform.Field
 ln = System.getProperty('line.separator')
 
@@ -22,7 +24,11 @@ def canBeLogged(requestedLevel){
     level <= requestedLevel ? true : false 
 }
 
-
+def getCurrentDateTime(){
+    currentDate = new Date()
+    SimpleDateFormat sdf = new SimpleDateFormat("MMMM dd yyyy HH:mm:ss a");
+    return sdf.format(currentDate)
+}
 
 def logMessage(message, requestedLevel){
     if(!canBeLogged(requestedLevel)){
@@ -31,7 +37,7 @@ def logMessage(message, requestedLevel){
     } 
     formattedMessage = getFormattedMessage(message, requestedLevel)
     echo "$formattedMessage"
-    generalLogFile << "$message$ln"
+    generalLogFile << "$formattedMessage$ln"
 }
 
 
@@ -58,7 +64,7 @@ def error(message){
 
 def getFormattedMessage(message, level){
     echo "getFormattedMessage: $message $level"
-    return "${new Date()} - $JOB_NAME - Build No - $BUILD_NUMBER $ln${logLevel.getLevelName(level)}: $message$ln" 
+    return "${getCurrentDateTime()} - $JOB_NAME - Build No - $BUILD_NUMBER $ln${logLevel.getLevelName(level)}: $message$ln" 
 }
 
 
