@@ -33,27 +33,28 @@ def logMessage(message, level){
 
 def debug(message){
     echo "debug: $message"
-    logMessage(message, logLevel.DEBUG)
+    //logMessage(message, logLevel.DEBUG)
 }
 
 def info(message){
     echo "info: $message"
-    logMessage(message, logLevel.INFO) 
+    //logMessage(message, logLevel.INFO) 
 }
 
 def warn(message){
     echo "warn: $message"
-    logMessage(message, logLevel.WARN) 
+    //logMessage(message, logLevel.WARN) 
 }
 
 def error(message){
     echo "error: $message"
-    logMessage(message, logLevel.ERROR) 
+    //logMessage(message, logLevel.ERROR) 
 }
 
 def getFormattedMessage(message, level){
     echo "getFormattedMessage: $message $level"
-    return "${new Date()} - $JOB_NAME - $BUILD_NUMBER $ln${logLevel.getLevelName(level)}: $message$ln" 
+    //return "${new Date()} - $JOB_NAME - $BUILD_NUMBER $ln${logLevel.getLevelName(level)}: $message$ln" 
+    return "message"
 }
 
 def test(message){
