@@ -19,7 +19,7 @@ dateTimeFormat = "MMMM dd, yyyy HH:mm:ss a"
 isFirstTime = true
 
 def setLevel(requestedLevel){
-    echo "received level = $requestedLevel"
+    //echo "received level = $requestedLevel"
     if(requestedLevel < logLevel.ALL || requestedLevel > logLevel.OFF){
         message = "Requested level $requestedLevel is out of scope, it should be within ${logLevel.ALL} and ${logLevel.OFF}"
         error message
@@ -28,8 +28,8 @@ def setLevel(requestedLevel){
 }
 
 def canBeLogged(requestedLevel){
-    echo "received level = $requestedLevel"
-    echo "level set = $level"
+    //echo "received level = $requestedLevel"
+    //echo "level set = $level"
     level <= requestedLevel ? true : false 
 }
 
@@ -49,7 +49,7 @@ def logMessage(message, requestedLevel){
         return
     } 
     formattedMessage = getFormattedMessage(message, requestedLevel)
-    echo "$formattedMessage"
+    //echo "$formattedMessage"
     if(isFirstTime){
         generalLogFile.write('')
         errorLogFile.write('')
@@ -70,7 +70,7 @@ def logMessage(message, stageName, requestedLevel){
         return
     } 
     formattedMessage = getFormattedMessage(message, stageName, requestedLevel)
-    echo "$formattedMessage"
+    //echo "$formattedMessage"
     if(isFirstTime){
         generalLogFile.write('')
         errorLogFile.write('')
@@ -86,54 +86,54 @@ def logMessage(message, stageName, requestedLevel){
 }
 
 def debug(message){
-    echo "debug: $message"
+    //echo "debug: $message"
     logMessage(message, logLevel.DEBUG)
 }
 
 def debug(message, stageName){
-    echo "debug: $message"
+    //echo "debug: $message"
     logMessage(message, stageName, logLevel.DEBUG)
 }
 
 def info(message){
-    echo "info: $message"
+    //echo "info: $message"
     logMessage(message, logLevel.INFO) 
 }
 
 def info(message, stageName){
-    echo "info: $message"
+    //echo "info: $message"
     logMessage(message, stageName, logLevel.INFO) 
 }
 
 def warn(message){
-    echo "warn: $message"
+    //echo "warn: $message"
     logMessage(message, logLevel.WARN) 
 }
 
 def warn(message, stageName){
-    echo "warn: $message"
+    //echo "warn: $message"
     logMessage(message, stageName, logLevel.WARN) 
 }
 
 def error(message){
-    echo "error: $message"
+    //echo "error: $message"
     logMessage(message, logLevel.ERROR) 
     throw new Exception("Error: $message")
 }
 
 def error(message, stageName){
-    echo "error: $message"
+    //echo "error: $message"
     logMessage(message, stageName, logLevel.ERROR) 
     throw new Exception("Error: $message")
 }
 
 def getFormattedMessage(message, level){
-    echo "getFormattedMessage: $message $level"
+    //echo "getFormattedMessage: $message $level"
     return "${getCurrentDateTime()} - $JOB_NAME - Build No - $BUILD_NUMBER $ln${logLevel.getLevelName(level)}: $message" 
 }
 
 def getFormattedMessage(message, stageName, level){
-    echo "getFormattedMessage: $message $level"
+    //echo "getFormattedMessage: $message $level"
     return "${getCurrentDateTime()} - $JOB_NAME - Build No - $BUILD_NUMBER - Stage - $stageName $ln${logLevel.getLevelName(level)}: $message" 
 }
 
