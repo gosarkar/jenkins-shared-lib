@@ -21,7 +21,7 @@ isFirstTime = true
 def setLevel(requestedLevel){
     echo "received level = $requestedLevel"
     if(requestedLevel < logLevel.ALL || requestedLevel > logLevel.OFF){
-        message = "Exception: Requested level $requestedLevel is out of scope, it should be within ${logLevel.ALL} and ${logLevel.OFF}"
+        message = "Requested level $requestedLevel is out of scope, it should be within ${logLevel.ALL} and ${logLevel.OFF}"
         error message
     }
     level = requestedLevel 
