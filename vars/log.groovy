@@ -20,6 +20,15 @@ isFirstTime = true
 
 def setLevel(requestedLevel){
     echo "received level = $requestedLevel"
+    
+    flag1 = requestedLevel < logLevel.ALL 
+    echo "requestedLevel < logLevel.ALL ? $flag1"
+    flag2 = requestedLevel > logLevel.OFF
+    echo "requestedLevel > logLevel.OFF ? $flag2"
+    
+    if(requestedLevel < logLevel.ALL || requestedLevel > logLevel.OFF){
+        error "Requested level $requestedLevel is out of scope, it should be within ${logLevel.ALL} and ${logLevel.OFF}"
+    }
     level = requestedLevel 
 }
 
@@ -51,9 +60,12 @@ def logMessage(message, requestedLevel){
         errorLogFile.write('')
         isFirstTime = false    
     }
-    generalLogFile << "$formattedMessage $ln"
+    
     if(isErrorMessage(requestedLevel)){
         errorLogFile << "$formattedMessage $ln"
+    }
+    else{
+        generalLogFile << "$formattedMessage $ln"
     }
 }
 
@@ -69,9 +81,12 @@ def logMessage(message, stageName, requestedLevel){
         errorLogFile.write('')
         isFirstTime = false    
     }
-    generalLogFile << "$formattedMessage $ln"
+    
     if(isErrorMessage(requestedLevel)){
         errorLogFile << "$formattedMessage $ln"
+    }
+    else{
+        generalLogFile << "$formattedMessage $ln"
     }
 }
 
@@ -122,7 +137,7 @@ def getFormattedMessage(message, level){
 
 def getFormattedMessage(message, stageName, level){
     echo "getFormattedMessage: $message $level"
-    return "${getCurrentDateTime()} - $JOB_NAME - Build No - $BUILD_NUMBER - Stage $stageName $ln${logLevel.getLevelName(level)}: $message" 
+    return "${getCurrentDateTime()} - $JOB_NAME - Build No - $BUILD_NUMBER - Stage - $stageName $ln${logLevel.getLevelName(level)}: $message" 
 }
 
 
