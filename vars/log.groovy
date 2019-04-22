@@ -21,7 +21,8 @@ isFirstTime = true
 def setLevel(requestedLevel){
     echo "received level = $requestedLevel"
     if(requestedLevel < logLevel.ALL || requestedLevel > logLevel.OFF){
-        throw new Exception("Exception: Requested level $requestedLevel is out of scope, it should be within ${logLevel.ALL} and ${logLevel.OFF}")
+        message = "Exception: Requested level $requestedLevel is out of scope, it should be within ${logLevel.ALL} and ${logLevel.OFF}"
+        error message
     }
     level = requestedLevel 
 }
@@ -117,11 +118,13 @@ def warn(message, stageName){
 def error(message){
     echo "error: $message"
     logMessage(message, logLevel.ERROR) 
+    throw new Exception("Error: $message")
 }
 
 def error(message, stageName){
     echo "error: $message"
     logMessage(message, stageName, logLevel.ERROR) 
+    throw new Exception("Error: $message")
 }
 
 def getFormattedMessage(message, level){
